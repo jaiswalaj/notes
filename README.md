@@ -1,0 +1,1 @@
+All the notes are written in CherryTree application. So install the application and download the repository to read the notes properly.

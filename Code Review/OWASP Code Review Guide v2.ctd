@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="OWASP Code Review" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1607410405" ts_lastsave="1607410432">
+  <node name="OWASP Code Review" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1607410405" ts_lastsave="1607669160">
+    <rich_text scale="h1">Please expand the tree to read all the topics.</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Notes are taken from OWASP Code Review Guide v2</rich_text>
+    <rich_text>.
+
+Notes Created By</rich_text>
+    <rich_text scale="h3">: Ayush Jaiswal</rich_text>
+    <rich_text>
+</rich_text>
     <node name="Intro" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607410415" ts_lastsave="1607513600">
       <rich_text>
 </rich_text>

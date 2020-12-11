@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cherrytree>
   <bookmarks list=""/>
-  <node name="OWASP Code Review" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1607410405" ts_lastsave="1607410432">
+  <node name="OWASP Code Review" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1607410405" ts_lastsave="1607669124">
+    <rich_text scale="h1">Please expand the tree to read all the topics.</rich_text>
+    <rich_text>
+
+</rich_text>
+    <rich_text scale="h3">Notes are taken from OWASP Code Review Guide v2</rich_text>
+    <rich_text>.
+
+Created By</rich_text>
+    <rich_text scale="h3">: Ayush Jaiswal</rich_text>
+    <rich_text>
+</rich_text>
     <node name="Intro" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607410415" ts_lastsave="1607513600">
       <rich_text>
 </rich_text>
@@ -308,7 +319,7 @@ It would not be scalable to bring in multiple security experts for every code ch
       <rich_text scale="h3" weight="heavy">Delphi</rich_text>
       <rich_text scale="h3"> : Independently interview or question people on the losses and compromises of the modules, whilst letting them know the feedback will be anonymous. The impression here is that the people will give more honest answers to the questions and will not be swayed by other people’s arguments and answers.</rich_text>
     </node>
-    <node name="Criteria For Establishing The Risk Profile" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607606389" ts_lastsave="1607606590">
+    <node name="Criteria For Establishing The Risk Profile" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607606389" ts_lastsave="1607606655">
       <rich_text scale="h3" weight="heavy">Common Criteria For Establishing The Risk Profile Of A Code Module</rich_text>
       <rich_text scale="h3">
 
@@ -319,9 +330,11 @@ It would not be scalable to bring in multiple security experts for every code ch
 1. </rich_text>
       <rich_text scale="h3" weight="heavy">Ease of Exposure</rich_text>
       <rich_text scale="h3"> : Is the code change in a piece of code directly exposed to the internet? Does an insider use the interface directly?
+
 2. </rich_text>
       <rich_text scale="h3" weight="heavy">Value of Loss</rich_text>
       <rich_text scale="h3"> :  How much could be lost if the module has a vulnerability introduced? Does the module contain some critical password hashing mechanism, or a simple change to HTML border on some internal test tool?
+
 3. </rich_text>
       <rich_text scale="h3" weight="heavy">Regulatory Controls</rich_text>
       <rich_text scale="h3"> : If a piece of code implements business logic associated with a standard that must be complied with, then these modules can be considered high risk as the penalties for non conformity can be high.</rich_text>
