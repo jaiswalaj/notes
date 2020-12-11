@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="OWASP Code Review" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1607410405" ts_lastsave="1607410432">
+    <node name="Intro" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607410415" ts_lastsave="1607513600">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3">There are four basic techniques for analyzing the security of a software application :- 
+1. AUTOMATED SCANNING
+2. MANUAL PENETRATION TESTING
+3. STATIC ANALYSIS
+4. MANUAL CODE REVIEW
+
+All you need to get started is a copy of the software baseline, a modern IDE, and the ability to think about the ways security holes get created.
+
+
+Before you look at any code, 
+1. Think hard about what is most important to your application. 
+2. Then you verify that the security mechanisms are present, free from flaws, and properly used. 
+3. You'll trace through the control and data flows in the application, thinking about what might go wrong.
+
+
+Security code review is the process of auditing the source code for an application to verify that the proper security controls are present, that they work as intended, and that they have been invoked in all the right places. Code review is a way of ensuring that the application has been developed so as to be “self-defending” in its given environment.
+
+
+Security code review is a method of assuring secure application developers are following secure development techniques. A general rule of thumb is that a penetration test should not discover any additional application vulnerabilities relating to the developed code after the application has undergone a proper security code review.
+
+
+Tools are good at assessing large amounts of code and pointing out possible issues but a person needs to verify every single result to determine if it is a real issue, if it is actually exploitable, and calculate the risk to the enterprise.
+
+
+In order to effectively review a code baseline, it is critical that the review team understands the business purpose of the application and the most critical business impacts. This will guide them in their search for serious vulnerabilities. The team should also identify the different threat agents, their motivation, and how they could potentially attack the application.
+The goal for the reviewer is to verify that the key risks have been properly addressed by security controls that work properly and are used in all the right places.
+
+
+
+The reviewer(s) need to be familiar with:
+1. Code: The language(s) used, the features and issues of that language from a security perspective. The issues one needs to look out for and best practices from a security and performance perspective.
+2. Context: The working of the application being reviewed. All security is in context of what we are trying to secure. Recommending military standard security mechanisms on an application that vends apples would be over-kill, and out of context. What type of data is being manipulated or processed and what would the damage to the company be if this data was compromised. Context is the “Holy Grail” of secure code inspection and risk assessment…we’ll see more later.
+3. Audience: The intended users of the application, is it externally facing or internal to “trusted” users. Does this application talk to other entities (machines/services)? Do humans use this application? 
+4. Importance: The availability of the application is also important. Shall the enterprise be affected in any great way if the application is “bounced” or shut down for a significant or insignificant amount of time?
+
+
+The guide drills down into common vulnerabilities and technical controls, including </rich_text>
+      <rich_text scale="h3" weight="heavy">XSS, SQL injection, session tracking, authentication, authorization, logging, and information leakage</rich_text>
+      <rich_text scale="h3">, giving code examples in various languages to guide the reviewer.</rich_text>
+      <rich_text>
+
+</rich_text>
+    </node>
+    <node name="Types of Code Reviews" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607415997" ts_lastsave="1607490564">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3">Lets spend a few minutes going over each type of code review to help in deciding how this book can be assistance to you.
+
+• </rich_text>
+      <rich_text scale="h3" weight="heavy">API/design code reviews</rich_text>
+      <rich_text scale="h3">. Use this book to understand how architecture designs can lead to security vulnerabilities. Also if the API is a third party API what security controls are in place in the code to prevent security vulnerabilities.
+
+• </rich_text>
+      <rich_text scale="h3" weight="heavy">Maintainability code reviews</rich_text>
+      <rich_text scale="h3">. These types of code reviews are more towards the organizations internal best coding practices. This book does cover code metrics, which can help the code reviewer, better understand what code to look at for security vulnerabilities if a section of code is overly complex.
+
+• </rich_text>
+      <rich_text scale="h3" weight="heavy">Integration code reviews</rich_text>
+      <rich_text scale="h3">. Again these types of code reviews are more towards the organizations internal coding policies. Is the code being integrated into the project fully vetted by IT management and approved? Many security vulnerabilities are now being implemented by using open source libraries whichh may bring in dependencies that are not secure. 
+
+• </rich_text>
+      <rich_text scale="h3" weight="heavy">Testing code reviews</rich_text>
+      <rich_text scale="h3">. Agile and Test Driven design where programmer creates unit tests to prove code methods works as the programmer intended. This code is not a guide for testing software. The code reviewer may want to pay attention to unit test cases to make sure all methods have appropriate exceptions; code fails in a safe way. If possible each security control in code has the appropriate unit test cases.
+
+</rich_text>
+    </node>
+    <node name="CMM" unique_id="4" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607416936" ts_lastsave="1607490556">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3">The </rich_text>
+      <rich_text scale="h3" weight="heavy">Capability Maturity Model (CMM)</rich_text>
+      <rich_text scale="h3"> is a widely recognized process model for measuring the development processes of a software development organization. It ranges from ‘level 1’ where development processes are ad hoc, unstable and not repeatable, to ‘level 5’ where the development processes are well organized, documented and continuously improving. It is assumed that a company’s development processes would start out at level 1 when starting out (a.k.a start-up mode) and will become more defined, repeatable and generally professional as the organization matures and improves. Introducing the ability to perform code reviews (note this is not dealing with secure code review yet) comes in when an organization has reached level 2 (Repeatable) or level 3 (Defined).</rich_text>
+    </node>
+    <node name="Identifying Vulnerabilities" unique_id="5" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607418048" ts_lastsave="1607592663">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3">The </rich_text>
+      <rich_text scale="h3" weight="heavy">common methods</rich_text>
+      <rich_text scale="h3"> of identifying vulnerabilities in a software project are:
+• Source Code Scanning using automated tools that run against a source code repository or module, finding string patterns deemed to potentially cause security vulnerabilities.
+• Automated Penetration Testing (black/grey box) through penetrating testing tools automatic scans, where the tool is installed on the network with the web site being tested, and runs a set of pre-defined tests against the web site URLs.
+• Manual Penetration Testing, again using tools, but with the expertise of a penetration tester performing more complicated tests. 
+• Secure Code Review with a security subject matter expert.
+
+
+It should be noted that no one method will be able to identify all vulnerabilities that a software project might encounter, however a </rich_text>
+      <rich_text scale="h3" weight="heavy">defense-in-depth approach</rich_text>
+      <rich_text scale="h3"> will reduce the risk of unknown issues being included in production software.
+
+</rich_text>
+    </node>
+    <node name="Non-Technical Advantages" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607589296" ts_lastsave="1607601342">
+      <rich_text scale="h3">The term “</rich_text>
+      <rich_text scale="h3" weight="heavy">360 review</rich_text>
+      <rich_text scale="h3">” refers to an approach in which the results of a source code review are used to plan and execute a penetration test, and the results of the penetration test are, in turn, used to inform additional source code review.
+
+
+Knowing the internal code structure from the code review, and using that knowledge to form test cases and abuse cases is known as </rich_text>
+      <rich_text scale="h3" weight="heavy">white box testing (also called clear box and glass box testing)</rich_text>
+      <rich_text scale="h3">. 
+
+
+This approach can lead to :-
+1. A more productive penetration test since testing can be focused on suspected or even known vulnerabilities. 
+2. A penetration test that can concentrate on weaknesses known to exist in the frameworks, libraries and languages used in developing the application.
+
+
+A vulnerability found during code review may turn out not to be exploitable during penetration test as the code reviewers are not considering a protective measure (input validation, for instance). While the vulnerability in this case is real, the actual risk may be lower due to the lack of exposure. However there is still an advantage to adding the penetration test incase the protective measure is changed in the future and therefore exposes the vulnerability.
+
+
+The results of the penetration test can then be used to target additional areas for code review. Besides addressing the par-ticular vulnerability exploited in the test, it is a good practice to look for additional places where that same class of vulnerability is present, even if not explicitly exploited in test.
+
+
+Implicit Advantages of Code Review to Development Practices are :-
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">Provides an historical record of codease and documentation</rich_text>
+      <rich_text scale="h3">. This helps any new developer to gain better understanding of the project and its context.
+		Capturing the review discussions in a review tool automatically and storing them for future reference will provide the development organization with a history of the changes on the module. These discussions  can also contain links to any architectural/functional/design/test specifications, bug or enhancement numbers.
+
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">Verification that the change has been tested by the developer. </rich_text>
+      <rich_text scale="h3">
+		Adding a description of the tests developer have run (manually or automated) against the changed code can give reviewers (and management) confidence that the change will work and not cause any 	regressions. Also this allows reviewers to review the tests and suggest further testing that may have been missed by the author.
+
+3. </rich_text>
+      <rich_text scale="h3" weight="heavy">Coding education for junior developers.</rich_text>
+      <rich_text scale="h3"> 
+		The design and code decisions discussed during a code review can be a learning experience for junior developers. Cross Pollination of Experience and new Ideas can only be beneficial in development of the organization.
+
+4. </rich_text>
+      <rich_text scale="h3" weight="heavy">Familiarization with code base.</rich_text>
+      <rich_text scale="h3"> 
+		Code review of a new feature developed, can be a conducted for the wider team to learn about the new feature and how its code will impact the product. This helps prevent functional duplication where separate teams end up coding the same small piece of functionality.
+
+5. </rich_text>
+      <rich_text scale="h3" weight="heavy">Pre-warning of integration clashes. </rich_text>
+      <rich_text scale="h3">
+		Spreading the word on upcoming changes via code reviews gives a greater chance of a developer learning that a change is about to impact their upcoming commit, and development timelines, etc., can be updated accordingly.
+		
+</rich_text>
+    </node>
+    <node name="Technical Advantages" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607591564" ts_lastsave="1607592651">
+      <rich_text scale="h3">Technical Aspects of Secure Code Review are :-
+1. May highlight some flaws that are new or specific to the code implementation of the application, like insecure termination of execution flow, synchronization errors, etc.
+2. Involves understanding the code implementation of the application and enumerating the flaws specific to it. 
+3. Ensure that the Security Controls such as a centralized blacklist, input validation, etc are fool-proof.
+4. Enumerates the weakness and flaws  in the existing security control.
+5. Exposes exact root causes of flaws.
+6. Complete data flow is traced.
+7. Analysis of vulnerable inputs that can lead to a possibility of an exploit in the application.
+8. Enumerates all the possible instances of a flaw identified, present within the application. For example, an application can be vulnerable to XSS vulnerability because of use of un-validated inputs in insecure display methods like scriptlets ‘response.write’ method, etc. in several places.
+
+
+The term ‘</rich_text>
+      <rich_text scale="h3" weight="heavy">source to sink analysis</rich_text>
+      <rich_text scale="h3">’ means to determine all possible inputs to the application (</rich_text>
+      <rich_text scale="h3" weight="heavy">source</rich_text>
+      <rich_text scale="h3">) and how they are being processed by it (</rich_text>
+      <rich_text scale="h3" weight="heavy">sink</rich_text>
+      <rich_text scale="h3">). A sink could be an insecure code pattern like a dynamic SQL query, a log writer, or a response to a client device. Consider a scenario where the source is a user input. It flows through the different classes/components of the application and finally falls into a concatenated SQL query (a sink) and there is no proper validation being applied to it in the path. In this case the application will be vulnerable to SQL injection attack, as identified by the source to sink analysis. Such an analysis helps in understanding, which vulnerable inputs can lead to a possibility of an exploit in the application.
+
+
+</rich_text>
+    </node>
+    <node name="PCI DSS Requirements for Code Review" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607592627" ts_lastsave="1607592980">
+      <rich_text scale="h3">PCI-DSS Requirements Related to Code Review are :-
+
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">Requirement 6.3.2</rich_text>
+      <rich_text scale="h3"> mandates a code review of custom code. Reviewing custom code prior to release to production or customers in order to identify any potential coding vulnerability (using either manual or automated processes) to include at least the following:
+   1) Code changes are reviewed by individuals other than the originating code author, and by individuals knowledgeable about code review techniques and secure coding practices. 
+   2) Code reviews ensure code is developed according to secure coding guidelines.
+   3) Appropriate corrections are implemented prior to release.
+   4) Code review results are reviewed and approved by management prior to release.
+
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">Requirement 6.5</rich_text>
+      <rich_text scale="h3"> address common coding vulnerabilities in software-development processes as follows:
+   1) Train developers in secure coding techniques, including how to avoid common coding vulnerabilities, and understanding how sensitive data is handled in memory.
+   2) Develop applications based on secure coding guidelines.</rich_text>
+    </node>
+    <node name="PA-DSS Requirements for Code Review" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607592974" ts_lastsave="1607594009">
+      <rich_text scale="h3">The </rich_text>
+      <rich_text scale="h3" weight="heavy">Payment Application Data Security Standard (PA-DSS)</rich_text>
+      <rich_text scale="h3"> is a set of rules and requirements similar to PCI-DSS. However, PA-DSS applies especially to software vendors and others who develop payment applications that store, process, or transmit cardholder data as part of authorization or settlement, where these payment applications are sold, distributed, or licensed to third parties.
+
+
+PA-DSS Requirements Related to Code Review are :-
+
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">Requirement 5.1.4</rich_text>
+      <rich_text scale="h3"> : Review of payment application code prior to release to customers after any significant change, to identify any potential coding vulnerability.
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">Requirement 5.2</rich_text>
+      <rich_text scale="h3"> : Develop all payment applications (internal and external, and including web administrative access to product) based on secure coding guidelines. 
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">Note:</rich_text>
+      <rich_text scale="h3"> This requirement for code reviews applies to all payment application components (both internal and public-facing web applications), as part of the system development life cycle. Code reviews can be conducted by knowledgeable internal personnel or third parties.</rich_text>
+    </node>
+    <node name="Code Review Report" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607594009" ts_lastsave="1607601020">
+      <rich_text scale="h3" weight="heavy">Code Review Reports </rich_text>
+      <rich_text scale="h3">
+
+A standard report template will provide enough information to enable the code reviewer to classify and prioritize the software vulnerabilities based on the applications threat model. This report does not need to be pages in length, it can be document based or incorporated into many automated code review tools. A report should provide the following information:
+
+1. Date of review.
+2. Application name, code modules reviewed.
+3. Developers and code reviewer names.
+4. Task or feature name, (TFS, GIT, Subversion, trouble ticket, etc.).
+5. A brief sentence(s) to classify and prioritize software vulnerability if any and if any remedial task need to be accomplished or follow up is needed.
+6. Link to documents related to task/feature, including requirements, design, testing and threat modeling documents.
+7. Code Review checklist if used, or link to organization's Code Review Checklist.
+8. Tests that developer has carried out on the code. Preferably the unit or automated tests themselves can be part of the review submission.
+9. If any tools such as FxCop, BinScope Binary Analyzer, etc. were used prior to code review.
+
+Now as the industry is following Agile methodology the focus has shifted towards developing and deploy the application quicky. In this case the Code Review for code in production may find software vulnerabilities but understand that the is a race with hackers to find the buggy and the vulnerable softwares will remain in production while the remedial fix is being worked on.</rich_text>
+    </node>
+    <node name="When to do Code Review" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607599256" ts_lastsave="1607601462">
+      <rich_text scale="h3">There are </rich_text>
+      <rich_text scale="h3" weight="heavy">three</rich_text>
+      <rich_text scale="h3"> stages in the </rich_text>
+      <rich_text scale="h3" weight="heavy">SDLC</rich_text>
+      <rich_text scale="h3"> when code can be reviewed:-
+
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">When code is about to be checked in (pre-commit)</rich_text>
+      <rich_text scale="h3"> : The development organization can state in their process that all code has to be reviewed before the code can be submitted to the source code repository.
+	Pros:
+	a. Low quality code is never pushed in the repository. 	
+	Cons :
+	a. Slow check-in process as review can take time.
+
+	For example, development processes may state that the code to be submitted must include links to requirements and design documentation and necessary unit and automated tests. This way the reviewers will have context on the exact code modification being done (due to the documentation) and they will know how the developer has tested the code (due to the tests). 
+	If the peer reviewers do not think the documentation is complete, or the tests are not extensive enough, they can reject the review, not because of the code itself, but because the necessary docs or tests are not complete. 
+	In an environment using Continuous Integration with automated tests running every night, the development team as a whole will know the next day (following check-in) if the submitted code was of enough quality. This ensures that developer pay proper attention to all the test cases and push only quality code to the main repository. 
+	
+	
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">When code has just been checked into a code base (post-commit)</rich_text>
+      <rich_text scale="h3"> : Here the developer submits their code change, and then uses the code repository change-lists to send the code difference for review. 
+	Pros:
+	a. Faster and comparitively easier for developers as they don't have to do code review every time they commit to the main repository. 
+	Cons :
+	a. Low quality code gets pushed and intergrated in the main repository.
+	b. Can cause more regression activities as the code changes are pushed without review and it might break some other functionality.
+	c. Reviewers have to put more efforts as they have to make sure that the code is not only secure but also it does not break other subsequent changes. 
+	
+	Some development organizations using the Agile methodology, add a ‘</rich_text>
+      <rich_text scale="h3" weight="heavy">security sprint</rich_text>
+      <rich_text scale="h3">’ into their processes. During the security sprint the code can be security reviewed, and have security specific test cases (written or automated) added.
+	
+	
+3. </rich_text>
+      <rich_text scale="h3" weight="heavy">When code audits are done</rich_text>
+      <rich_text scale="h3"> : Some organizations have processes to review code at certain intervals (i.e. yearly) or when a vulnerable piece of code is suspected of being repeated throughout the code base. Here static code analyzers, or simple string searches throughout the code base (for specific vulnerability patterns) can speed up the process. This review is not connected to the submission of a feature or bug fix, they are triggered by process considerations and are likely to involve the review of an entire application or code base rather than a review of a single submission.
+	</rich_text>
+    </node>
+    <node name="Who should do Code Review" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607601462" ts_lastsave="1607602876">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3">All developers needs to understand the exposure points of their applications and what kind of threats exist for their applications.
+ It is best to weave secure code reviews into the SDLC processes so that development organizations do not see security as a hindrance, but as an assistance. 
+ Organizations should identify the developers and testers interested in Security and provide them appropriate training for conducting  Secure Code Review. 
+ These people who have some knowledge of security practices are known as Satellites in BSIMM Terminology. 
+ Organizations should assign the task of Secure Code Review to these Satellites who can connect with the Subject Matter Experts (SMEs) in case of any confusion or conflict. 
+ As the process grows, more developers will gain awareness of secure coding issues (as they have seen code getting rejected on secure coding grounds) and the frequency of secure coding issues in code reviews should drop.</rich_text>
+      <rich_text>
+ </rich_text>
+    </node>
+    <node name="Code Review Approach" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607602876" ts_lastsave="1607606186">
+      <rich_text>
+</rich_text>
+      <rich_text scale="h3" weight="heavy">Security Code Review For Agile and Waterfall Development Model</rich_text>
+      <rich_text scale="h3">
+
+Agile tries to keep code review and testing as near as possible to the development phase. It is a common practice to define short development cycles (a.k.a. Iterations or Sprints). At the end of each cycle, all the code should be production quality code. It can be incomplete, but it must add some value. That affects the review process, as reviewing should be continuous. From the point of view of secure coding review, it shouldn’t make a difference if the development organization uses agile or waterfall development practices. Code review is aligned to the code submitted, not the order of feature development vs testing, or the time patterns assigned to the coding task. In many organizations the line between waterfall and agile is becoming blurred, with traditional waterfall departments introducing the Continuous Integration (CI) aspects from agile, including nightly builds, automated testing, test driven development, etc.
+
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">A Risk Based Approach to Code Review</rich_text>
+      <rich_text scale="h3">
+
+It would not be scalable to bring in multiple security experts for every code change occurring on a product, the resources of those persons or those teams would not be large enough to handle every change. Therefore companies can make a call on which changes are important and need to be closely scrutinized, and which ones can be allowed through with minimal inspection. The process of deciding which changes need which level of code review is based on the risk level of the module the change is within. it is up to management (or persons delegated by management) to create a reproducible measure or framework for deciding the risk associated with a code change. Decisions on the risk of a module or piece of code should be based on solid cost benefit analysis and it would be irresponsible to decide all modules are high risk. Therefore management should meet with persons who have an understanding of the code base and security issues faced by the products, and create a measure of risk for various ele-ments of code. Code could be split up into modules, directories, products, etc., each with a risk level associated with it.
+
+</rich_text>
+    </node>
+    <node name="Options For Establishing Risk" unique_id="14" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607606147" ts_lastsave="1607606389">
+      <rich_text scale="h3" weight="heavy">Technique and Method</rich_text>
+      <rich_text scale="h3">
+
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">Quantitative</rich_text>
+      <rich_text scale="h3">	: Bring people together and establish a monetary value on the potential loss associated with the code. Gauge the likelihood that the code could be compromised. Use dollar values produced from these calculations to determine the level of risk. 
+
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">Qualitative</rich_text>
+      <rich_text scale="h3"> : Bring people together and discuss opinions on what level of loss is associated with the modules, and opinions on likelihood of compromise. Qualitative does not attempt to nail down monetary associations with the loss, but tends towards the perception or opinion of associated losses.
+
+3. </rich_text>
+      <rich_text scale="h3" weight="heavy">Delphi</rich_text>
+      <rich_text scale="h3"> : Independently interview or question people on the losses and compromises of the modules, whilst letting them know the feedback will be anonymous. The impression here is that the people will give more honest answers to the questions and will not be swayed by other people’s arguments and answers.</rich_text>
+    </node>
+    <node name="Criteria For Establishing The Risk Profile" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1607606389" ts_lastsave="1607606590">
+      <rich_text scale="h3" weight="heavy">Common Criteria For Establishing The Risk Profile Of A Code Module</rich_text>
+      <rich_text scale="h3">
+
+</rich_text>
+      <rich_text scale="h3" weight="heavy">Criteria and Explanation</rich_text>
+      <rich_text scale="h3">
+
+1. </rich_text>
+      <rich_text scale="h3" weight="heavy">Ease of Exposure</rich_text>
+      <rich_text scale="h3"> : Is the code change in a piece of code directly exposed to the internet? Does an insider use the interface directly?
+2. </rich_text>
+      <rich_text scale="h3" weight="heavy">Value of Loss</rich_text>
+      <rich_text scale="h3"> :  How much could be lost if the module has a vulnerability introduced? Does the module contain some critical password hashing mechanism, or a simple change to HTML border on some internal test tool?
+3. </rich_text>
+      <rich_text scale="h3" weight="heavy">Regulatory Controls</rich_text>
+      <rich_text scale="h3"> : If a piece of code implements business logic associated with a standard that must be complied with, then these modules can be considered high risk as the penalties for non conformity can be high.</rich_text>
+    </node>
+  </node>
+</cherrytree>
